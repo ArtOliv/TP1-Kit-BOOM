@@ -25,11 +25,10 @@ Caixa *criaCaixa(int largura, int altura);
 
 int destroiCaixa(Caixa *caixa);
 
-int verificarAdjacencia();
+int verificarAdjacencia(Caixa *caixa);
 
 int colocaExplosivo(Caixa *caixa, Explosivo config);
 
 int verificaValidade(Explosivo explosivos[], int num_explosivos);
 
 #endif
-
