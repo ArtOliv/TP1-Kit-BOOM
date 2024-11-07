@@ -2,7 +2,6 @@
 
 Caixa *criaCaixa(){
     Caixa *caixa = (Caixa*) malloc (sizeof(Caixa));
-    
     if(caixa != NULL){
         caixa->matriz = (Explosivo***) malloc (6 * sizeof(Explosivo**));
         if(caixa->matriz == NULL){
@@ -32,11 +31,6 @@ Caixa *criaCaixa(){
 int destroiCaixa(Caixa *caixa){
     if(caixa != NULL){
         for(int i = 0; i < 6; i++){
-            for(int j = 0; j < 6; j++){
-                if(caixa->matriz[i][j] != NULL){
-                    free(caixa->matriz[i][j]);
-                }
-            }
             free(caixa->matriz[i]);
         }
         free(caixa->matriz);
@@ -82,7 +76,6 @@ int verificarAdjacencia(Caixa *caixa){
     for(int i = 0; i < 6; i++){
         for(int j = 0; j < 6; j++){
             Explosivo *explosivo_atual = caixa->matriz[i][j];
-            
             if(explosivo_atual != NULL){
                 if(i > 0){
                     Explosivo *explosivo_acima = caixa->matriz[i - 1][j];

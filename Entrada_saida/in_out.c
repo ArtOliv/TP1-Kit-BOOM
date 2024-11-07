@@ -12,10 +12,7 @@ int lerComposicao(FILE *arquivoComposicao){
 
 int lerConfiguracao(FILE *arquivoConfiguracao, Caixa *caixa, Explosivo *listaExplosivos, int num_explosivos){
     for(int i = 0; i < num_explosivos; i++){
-        if(fscanf(arquivoConfiguracao, "%d %d %d %d %1d%2s", &listaExplosivos[i].x_inicial, &listaExplosivos[i].y_inicial, &listaExplosivos[i].x_final, &listaExplosivos[i].y_final, &listaExplosivos[i].tamanho, listaExplosivos[i].cor) != 6){
-            printf("Falha ao ler informações do arquivo de configuração!");
-            return 0;
-        }
+        fscanf(arquivoConfiguracao, "%d %d %d %d %1d%2s", &listaExplosivos[i].x_inicial, &listaExplosivos[i].y_inicial, &listaExplosivos[i].x_final, &listaExplosivos[i].y_final, &listaExplosivos[i].tamanho, listaExplosivos[i].cor);
     }
 
     for(int i = 0; i < num_explosivos; i++){
@@ -24,26 +21,27 @@ int lerConfiguracao(FILE *arquivoConfiguracao, Caixa *caixa, Explosivo *listaExp
     return 1;
 }
 
-void lerArquivos(int argc, char *argv[], FILE **arquivoComposicao, FILE **arquivoConfiguracao){
+int lerArquivos(int argc, char *argv[], FILE **arquivoComposicao, FILE **arquivoConfiguracao){
     int opt;
     while((opt = getopt(argc, argv, "a:b:")) != -1){
-        switch(opt){
-            case 'a':
-                *arquivoComposicao = fopen(optarg, "r");
-                if(*arquivoComposicao == NULL){
-                    printf("Erro ao ler o arquivo de composição!\n");
-                }
-                break;
-            case 'b':
-                *arquivoConfiguracao = fopen(optarg, "r");
-                if(*arquivoConfiguracao == NULL){
-                    printf("Erro ao ler o arquivo de configuração!\n");
-                }
-                break;
-            default:
-                printf("Inválido!\n");
+        if(opt == 'a'){
+            *arquivoComposicao = fopen(optarg, "r");
+            if(*arquivoComposicao == NULL){
+                printf("Erro ao ler o arquivo de composição!\n");
+                return 1;
+            }
+        } else if(opt == 'b'){
+            *arquivoConfiguracao = fopen(optarg, "r");
+            if(*arquivoConfiguracao == NULL){
+                printf("Erro ao ler o arquivo de configuração!\n");
+                return 1;
+            }
+        } else {
+            printf("Arquivos inválidos!\n");
+            return 1;
         }
     }
+    return 0;
 }
 
 int verificaValidade(Caixa *caixa){

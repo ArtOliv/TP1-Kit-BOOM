@@ -1,10 +1,11 @@
 PC = gcc
-EXEC = kitBoom
+EXECUTAVEL = kitBoom
 OBJ = main.o in_out.o kit.o
 INTERFACE = Interface_kit/kit.h
+CAMINHO = ./Entrada_saida/Arquivos_entrada/
 
 all: $(OBJ)
-	$(PC) $(OBJ) -o $(EXEC)
+	$(PC) $(OBJ) -o $(EXECUTAVEL)
 
 main.o: Main/main.c $(INTERFACE)
 	$(PC) -c Main/main.c
@@ -17,7 +18,7 @@ kit.o: Configuracao_kit/kit.c $(INTERFACE)
 
 clean:
 	rm *.o
-	rm $(EXEC)
+	rm $(EXECUTAVEL)
 
-run: $(EXEC)
-	./$(EXEC) -a composicao.txt -b configuracao.txt
+run: $(EXECUTAVEL)
+	./$(EXECUTAVEL) -a $(CAMINHO)composicao.txt -b $(CAMINHO)configuracao.txt

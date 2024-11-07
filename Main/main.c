@@ -9,7 +9,7 @@ int main(int argc, char *argv[]){
     lerArquivos(argc, argv, &arquivoComposicao, &arquivoConfiguracao);
     
     int total_explosivos = lerComposicao(arquivoComposicao);
-    
+
     Explosivo *listaExplosivos = criaListaExplosivos(total_explosivos);
     
     lerConfiguracao(arquivoConfiguracao, caixa, listaExplosivos, total_explosivos);

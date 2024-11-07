@@ -21,7 +21,9 @@ int lerComposicao(FILE *arquivoComposicao);
 
 int lerConfiguracao(FILE *arquivoConfiguracao, Caixa *caixa, Explosivo *listaExplosivos, int num_explosivos);
 
-void lerArquivos(int argc, char *argv[], FILE **arquivoComposicao, FILE **arquivoConfiguracao);
+int lerArquivos(int argc, char *argv[], FILE **arquivoComposicao, FILE **arquivoConfiguracao);
+
+int verificaValidade(Caixa *caixa);
 
 Caixa *criaCaixa();
 
@@ -34,7 +36,5 @@ int destroiLista(Explosivo *listaExplosivos);
 int verificarAdjacencia(Caixa *caixa);
 
 int colocaExplosivo(Caixa *caixa, Explosivo config);
-
-int verificaValidade(Caixa *caixa);
 
 #endif
