@@ -18,7 +18,13 @@ int lerConfiguracao(FILE *arquivoConfiguracao, Caixa *caixa, Explosivo *listaExp
     for(int i = 0; i < num_explosivos; i++){
         colocaExplosivo(caixa, listaExplosivos[i]);
     }
-    return 1;
+
+    char temp = fgetc(arquivoConfiguracao);
+    if(temp == '\n'){
+        return 1;
+    } else if( temp == EOF){
+        return EOF;
+    }
 }
 
 int lerArquivos(int argc, char *argv[], FILE **arquivoComposicao, FILE **arquivoConfiguracao){
@@ -44,12 +50,12 @@ int lerArquivos(int argc, char *argv[], FILE **arquivoComposicao, FILE **arquivo
     return 0;
 }
 
-int verificaValidade(Caixa *caixa){
+int verificaValidade(Caixa *caixa, int index){
     int validade = verificarAdjacencia(caixa);
     if(validade == 0){
-        printf("A configuração dos explosivos na caixa é válida!\n");
+        printf("A configuração %d dos explosivos na caixa é válida!\n", index);
     } else {
-        printf("A configuração dos explosivos na caixa é inválida!\n");
+        printf("A configuração %d dos explosivos na caixa é inválida!\n", index);
     }
     return 0;
 }

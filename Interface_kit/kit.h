@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/time.h>
+#include <sys/resource.h>
 
 typedef struct{
     char cor[3];
@@ -23,7 +25,7 @@ int lerConfiguracao(FILE *arquivoConfiguracao, Caixa *caixa, Explosivo *listaExp
 
 int lerArquivos(int argc, char *argv[], FILE **arquivoComposicao, FILE **arquivoConfiguracao);
 
-int verificaValidade(Caixa *caixa);
+int verificaValidade(Caixa *caixa, int index);
 
 Caixa *criaCaixa();
 
