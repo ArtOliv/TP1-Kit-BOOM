@@ -1,7 +1,4 @@
-# TP1-Kit-BOOM
-
 Trabaho da disciplina de Projeto e Análise de Algoritmos da Universidade Federal de São João Del Rei 
-feito por Arthur Carvalho Rodrigues Oliveira e Felipe de Araujo Antunes Quintas.
 
 Este trabalho tem o seguinte texto como sua descrição:
 
@@ -16,13 +13,39 @@ explosivos são encapsulados em barras com largura de 1 centímetro e compriment
 identificadas pelo seu tamanho (1,2 ou 3) e pela sua cor (Az, Am, Vm, ou Vd). Uma possível
 composição do Kit BOOM é a seguinte:
 
-Exemplo presente em /Entrada_saida/Arquivos_entrada/composicao.txt
+2 3Az  
+2 2Az  
+3 1Az  
+2 2Vm  
+2 1Vm  
+2 3Am  
+1 1Am  
+2 2Vd  
+2 3Vd  
 
 Para facilitar a sua tarefa de desenvolvimento, você desenvolveu uma forma de representação
 de uma configuração, onde cada linha traz a posição inicial e final de uma barra, assim como a
 especificação da mesma:
 
-Exemplo presente em /Entrada_saida/Arquivos_entrada/configuracao.txt
+1 1 3 1 3Am  
+4 1 6 1 3Am  
+1 2 3 2 3Vd  
+4 2 4 2 1Az  
+5 2 6 2 2Vd  
+1 3 3 3 3Vd  
+4 3 4 3 1Am  
+5 3 5 3 1Vm  
+6 3 6 3 1Vm  
+1 4 1 5 2Vm  
+2 4 2 5 2Vm  
+3 4 3 5 2Az  
+4 4 4 5 2Vd  
+5 4 5 5 2Az  
+6 4 6 4 1Az  
+6 5 6 5 1Az  
+1 6 3 6 3Az  
+4 6 6 6 3Az  
 
-O programa testa, para cada composição, várias configurações a fim de verificar se a configuração é válida ou não. Para testar altere os arquivos de entrada(composicao.txt e configuracao.txt), onde para cada configuração existe uma quebra de linha entre elas no arquivo de texto. Na saída do programa, além da saída da verificação da validade da configuração, ainda existe a saída das funções gettimeofday() e getrusage(), porém são apenas para fins de análise.
+O programa testa, para cada composição, várias configurações a fim de verificar se é válida ou não. Para testar, altere os arquivos de entrada(composicao.txt e configuracao.txt), onde para cada configuração existe uma quebra de linha entre elas no arquivo de texto
+
 Para compilar o programa apenas digite "make" no terminal e depois "make run" para rodá-lo, "make clean" para excluir os arquivos objetos(.o) e o executável(.exe).
